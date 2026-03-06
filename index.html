@@ -48,7 +48,6 @@ button{
     height:20px;
     width:0%;
     background:green;
-    transition: width 0.1s;
 }
 
 </style>
@@ -81,45 +80,70 @@ button{
 
 <script>
 
-let finalData = [];
-let summaryData = [];
+let finalData=[];
+let summaryData=[];
+let currentProgress=0;
 
-function updateProgress(percent,text){
-document.getElementById("progressBar").style.width = percent + "%";
-document.getElementById("progressText").innerText = text;
+function animateProgress(target,text){
+
+let interval=setInterval(function(){
+
+if(currentProgress>=target){
+clearInterval(interval);
+}else{
+currentProgress++;
+document.getElementById("progressBar").style.width=currentProgress+"%";
+document.getElementById("progressText").innerText=text+" "+currentProgress+"%";
+}
+
+},15);
+
 }
 
 function readExcel(file,callback){
-let reader = new FileReader();
 
-reader.onload = function(e){
-let data = new Uint8Array(e.target.result);
-let workbook = XLSX.read(data,{type:'array'});
-let sheet = workbook.Sheets[workbook.SheetNames[0]];
-let json = XLSX.utils.sheet_to_json(sheet);
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+let data=new Uint8Array(e.target.result);
+let workbook=XLSX.read(data,{type:'array'});
+let sheet=workbook.Sheets[workbook.SheetNames[0]];
+let json=XLSX.utils.sheet_to_json(sheet);
+
 callback(json);
+
 };
 
 reader.readAsArrayBuffer(file);
+
 }
 
 function processFiles(){
 
-let mfgFile = document.getElementById("mfgFile").files[0];
-let rejFile = document.getElementById("rejFile").files[0];
+let mfgFile=document.getElementById("mfgFile").files[0];
+let rejFile=document.getElementById("rejFile").files[0];
 
 if(!mfgFile || !rejFile){
 alert("Please upload both files");
 return;
 }
 
-updateProgress(0,"Progress: 0%");
+currentProgress=0;
+animateProgress(5,"Reading Files");
+
 document.getElementById("downloadBtn").disabled=true;
 
 readExcel(mfgFile,function(mfgData){
+
+animateProgress(20,"Reading Rejection");
+
 readExcel(rejFile,function(rejData){
+
 calculate(mfgData,rejData);
+
 });
+
 });
 
 }
@@ -153,11 +177,13 @@ let workCenter=(row["WC"]||"").toString().trim();
 let opNo=row["Op."];
 
 let rejectionRow=rejData.find(r=>{
+
 let rejPart=(r["Part number"]||"").toString().replace(/^0-0\s*/,"").trim();
 
 return (r["M-order"]||"").toString().trim()===orderNo &&
 (r["Op."]||"")===opNo &&
 rejPart===partNo;
+
 });
 
 let rejection=rejectionRow ? (rejectionRow["Rejected qty"]||0) : 0;
@@ -166,6 +192,7 @@ let reportQty=row["Rep. qty"]||0;
 let finalQty=reportQty+rejection;
 
 let key=`${orderNo}_${partNo}`;
+
 let previous=prevQty[key]||0;
 
 let wip=previous-finalQty;
@@ -177,34 +204,43 @@ prevQty[key]=finalQty;
 if(wip>0){
 
 finalData.push({
+
 "Order No":orderNo,
 "Op No":opNo,
 "Part Number":partNo,
-"Final Report Qty":finalQty,
-"WIP QTY":wip,
-"Work Center":workCenter
+"Work Center":workCenter,
+"WIP Stock":wip
+
 });
 
 let existing=summaryData.find(s=>s["Part Number"]===partNo && s["Work Center"]===workCenter);
 
 if(existing){
+
 existing["Total WIP Qty"]+=wip;
+
 }else{
+
 summaryData.push({
+
 "Part Number":partNo,
 "Work Center":workCenter,
 "Total WIP Qty":wip
+
 });
+
 }
 
 }
 
-let percent=50+Math.floor((count/total)*50);
-updateProgress(percent,"Processing WIP: "+percent+"%");
+let percent=30+Math.floor((count/total)*70);
+
+animateProgress(percent,"Processing WIP");
 
 });
 
-updateProgress(100,"Completed: 100%");
+animateProgress(100,"Completed");
+
 document.getElementById("downloadBtn").disabled=false;
 
 alert("WIP Report Generated Successfully!");
@@ -217,9 +253,13 @@ let pivotMap={};
 let workCenters=new Set();
 
 finalData.forEach(r=>{
+
 workCenters.add(r["Work Center"]);
+
 let key=r["Part Number"]+"||"+r["Work Center"];
-pivotMap[key]=(pivotMap[key]||0)+r["WIP QTY"];
+
+pivotMap[key]=(pivotMap[key]||0)+r["WIP Stock"];
+
 });
 
 workCenters=Array.from(workCenters).sort();
@@ -229,14 +269,19 @@ let partNumbers=[...new Set(finalData.map(r=>r["Part Number"]))].sort();
 let pivotArray=[["Part Number",...workCenters]];
 
 partNumbers.forEach(pn=>{
+
 let row=[pn];
 
 workCenters.forEach(wc=>{
+
 let val=pivotMap[pn+"||"+wc]||"";
+
 row.push(val);
+
 });
 
 pivotArray.push(row);
+
 });
 
 return pivotArray;
@@ -246,8 +291,11 @@ return pivotArray;
 function downloadExcel(){
 
 if(finalData.length===0){
+
 alert("No data to export!");
+
 return;
+
 }
 
 let workbook=XLSX.utils.book_new();
