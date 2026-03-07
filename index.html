@@ -1,183 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
-    <meta charset="UTF-8">
-    <title>My World</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>My World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
 
-        body {
-            background: #f4f6f9;
-            color: #333;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-        header {
-            background: #2c3e50;
-            color: white;
-            padding: 20px 0;
-        }
+body{
+background:#f4f6f9;
+color:#333;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            margin: auto;
-        }
+header{
+background:#2c3e50;
+color:white;
+padding:20px 0;
+}
 
-        nav h1 {
-            font-size: 24px;
-        }
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:90%;
+margin:auto;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
+nav h1{
+font-size:24px;
+}
 
-        nav ul li {
-            margin-left: 20px;
-        }
+nav ul{
+list-style:none;
+display:flex;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+nav ul li{
+margin-left:20px;
+}
 
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
+nav ul li a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
 
-        .hero {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
-            color: white;
-        }
+nav ul li a:hover{
+color:#1abc9c;
+}
 
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+.hero{
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+color:white;
+}
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+.hero h2{
+font-size:48px;
+margin-bottom:20px;
+}
 
-        .btn {
-            padding: 12px 25px;
-            background: #1abc9c;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
+.hero p{
+font-size:18px;
+margin-bottom:30px;
+}
 
-        .btn:hover {
-            background: #16a085;
-        }
+.btn{
+padding:12px 25px;
+background:#1abc9c;
+color:white;
+text-decoration:none;
+border-radius:5px;
+transition:0.3s;
+}
 
-        section {
-            padding: 60px 10%;
-            text-align: center;
-        }
+.btn:hover{
+background:#16a085;
+}
 
-        .cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+section{
+padding:60px 10%;
+text-align:center;
+}
 
-        .card {
-            background: white;
-            width: 280px;
-            padding: 20px;
-            margin: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
+.cards{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+margin-top:40px;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-        }
+.card{
+background:white;
+width:280px;
+padding:20px;
+margin:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
 
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
+.card:hover{
+transform:translateY(-10px);
+}
 
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
-            }
+footer{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:20px 0;
+margin-top:40px;
+}
 
-            .cards {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+@media (max-width:768px){
+
+.hero h2{
+font-size:32px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-    <nav>
-        <h1>My World</h1>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+<nav>
+<h1>My World</h1>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
 </header>
 
 <div class="hero">
-    <div>
-        <h2>Welcome to My World </h2>
-        <p>Create something new </p>
-        <a href="https://arinanthan.github.io/MY-WORLD-WIPSTOCK/" class="btn">Get Started</a>
-    </div>
+
+<div>
+
+<h2>Welcome to My World</h2>
+
+<p>Create something new</p>
+
+<a href="welcome.html" class="btn">Get Started</a>
+
+</div>
+
 </div>
 
 <section>
-    <h2>Our Services</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Web Design</h3>
-            <p>Beautiful and modern website designs.</p>
-        </div>
-        <div class="card">
-            <h3>Development</h3>
-            <p>Fast and responsive web development.</p>
-        </div>
-        <div class="card">
-            <h3>SEO</h3>
-            <p>Optimize your website for search engines.</p>
-        </div>
-    </div>
+
+<h2>Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Web Design</h3>
+<p>Beautiful and modern website designs.</p>
+</div>
+
+<div class="card">
+<h3>Development</h3>
+<p>Fast and responsive web development.</p>
+</div>
+
+<div class="card">
+<h3>SEO</h3>
+<p>Optimize your website for search engines.</p>
+</div>
+
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 MyWebsite | All Rights Reserved</p>
+
+<p>© 2026 MyWebsite | All Rights Reserved</p>
+
 </footer>
 
 </body>
