@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>MONITOR ERP 2.O</title>
+<title>MONITOR ERP 2.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
@@ -17,202 +18,434 @@ nav{display:flex;justify-content:space-between;align-items:center;width:90%;marg
 nav ul{display:flex;list-style:none;}
 nav ul li{margin-left:20px;}
 nav ul li a{color:white;text-decoration:none;}
-.hero{height:90vh;display:flex;justify-content:center;align-items:center;text-align:center;
+
+.hero{
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
 background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;color:white;width:100%;height:950px;}
-.hero h2{font-size:48px;margin-bottom:20px;}
-.btn{padding:12px 25px;background:#1abc9c;color:white;border:none;border-radius:5px;cursor:pointer;}
-section{padding:60px 10%;text-align:center;}
-.cards{display:flex;justify-content:center;flex-wrap:wrap;margin-top:40px;}
-.card{background:white;width:280px;padding:20px;margin:15px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-footer{background:#2c3e50;color:white;text-align:center;padding:20px;margin-top:40px;}
-
-/* ABOUT SECTION */
-#about p{max-width:700px;margin:auto;margin-top:20px;line-height:1.6;}
-
-/* WIP TOOL */
-#wipPage{display:none;background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
 url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
-min-height:100vh;padding:40px;color:white;}
-.container{background:rgba(0,0,0,0.65);padding:30px;width:450px;border-radius:10px;margin:auto;}
-button{padding:8px 15px;margin:5px;cursor:pointer;}
-#progressContainer{width:100%;border:1px solid #ccc;height:20px;margin-top:10px;background:white;}
-#progressBar{height:20px;width:0%;background:green;}
+color:white;
+height:950px;
+}
 
-/* OPTIONAL FIXED BOX */
-div.fixed {position: fixed; bottom: 0; right: 0; width: 300px; border: 3px solid #73AD21;}
+.hero h2{font-size:48px;margin-bottom:20px;}
+
+.btn{
+padding:12px 25px;
+background:#1abc9c;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+section{padding:60px 10%;text-align:center;}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.card{
+background:white;
+width:280px;
+padding:20px;
+margin:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+/* WIP TOOL PAGE */
+
+#wipPage{
+display:none;
+background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+min-height:100vh;
+padding:40px;
+color:white;
+}
+
+.container{
+background:rgba(0,0,0,0.65);
+padding:30px;
+width:450px;
+border-radius:10px;
+margin:auto;
+}
+
+button{
+padding:8px 15px;
+margin:5px;
+cursor:pointer;
+}
+
+#progressContainer{
+width:100%;
+border:1px solid #ccc;
+height:20px;
+margin-top:10px;
+background:white;
+}
+
+#progressBar{
+height:20px;
+width:0%;
+background:#1abc9c;
+transition:0.4s;
+}
 </style>
 </head>
 
 <body>
 
 <!-- HOME PAGE -->
+
 <div id="homePage">
+
 <header>
 <nav>
+
 <h1>
-    <img src="logo.png" alt="" 
-         style="height:50px; vertical-align:10px; margin-right:10px;">
-    
-  </h1>
+<img src="logo.png" style="height:50px;margin-right:10px;">
+</h1>
+
 <ul>
 <li><a href="#homePage">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
+
 </nav>
 </header>
 
 <div class="hero">
 <div>
+
 <h2 style="color:orange;">SAKTHI AUTO COMPONENT LIMITED</h2>
-<p style="font-size:35px; color:#A9A9A9; font-weight: bold;">WIP Report</p><br><br>
+
+<p style="font-size:35px;color:#A9A9A9;font-weight:bold;">WIP Report</p>
+
+<br><br>
+
 <button class="btn" onclick="openTool()">Get Started</button>
+
 </div>
 </div>
-<br>
-<br>
-<br>
-<!-- ABOUT SECTION -->
+
 <section id="about">
 <h2>About Us</h2>
-<p>My World is a platform designed to build modern web tools and applications.
-Our goal is to simplify digital solutions like automation, reporting systems,
-and productivity tools for businesses and individuals.</p>
+
+<p>
+My World is a platform designed to build modern web tools and applications.
+Our goal is to simplify automation, reporting systems,
+and productivity tools.
+</p>
+
 </section>
 
-<!-- SERVICES SECTION -->
 <section id="services">
+
 <h2>Our Services</h2>
+
 <div class="cards">
+
 <div class="card">
 <h3>Web Design</h3>
 <p>Beautiful and modern website designs.</p>
 </div>
+
 <div class="card">
 <h3>Development</h3>
 <p>Fast and responsive web development.</p>
 </div>
+
 <div class="card">
 <h3>SEO</h3>
 <p>Optimize your website for search engines.</p>
 </div>
+
 </div>
 </section>
 
-<!-- CONTACT SECTION -->
 <section id="contact">
-<h2>Contact Us</h2>
-<div class="cards">
-<div class="card">
-<h3>Phone</h3>
-<p>+919629034649</p>
-</div>
-<div class="card">
-<h3>Email</h3>
-<p>aritamil001@gmail.com</p>
-</div>
-<div class="card">
-<h3>Location</h3>
-<p>Tamil Nadu, India</p>
-</div>
-</div>
 
-<br>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31231.366960655996!2d78.92336974590647!3d11.910595252182477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bac9e8e112643a9%3A0x6c9930b67c4f99b0!2sKulathur%2C%20Tamil%20Nadu%20606402!5e0!3m2!1sen!2sin!4v1772876651676!5m2!1sen!2sin" 
-width="900" 
-height="300" 
-style="border:10;" 
-allowfullscreen="" 
-loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+<h2>Contact Us</h2>
+
+<p>Phone : +919629034649</p>
+<p>Email : aritamil001@gmail.com</p>
+
 </section>
 
 <footer>
 <p>© 2026 MyWorld | All Rights Reserved</p>
 </footer>
+
 </div>
 
 <!-- WIP TOOL PAGE -->
+
 <div id="wipPage">
+
 <div class="container">
+
 <h2>WIP Stock Auto Report</h2>
+
 <label>Upload Manufacturing File:</label><br>
 <input type="file" id="mfgFile"><br><br>
+
 <label>Upload Rejection File:</label><br>
 <input type="file" id="rejFile"><br><br>
+
 <button onclick="processFiles()">Generate WIP Report</button>
-<button id="downloadBtn" onclick="downloadExcel()" disabled>Download Excel</button>
+
+<button id="downloadBtn" onclick="downloadExcel()" disabled>
+Download Excel
+</button>
+
 <button onclick="goHome()">Back</button>
+
 <br><br>
-<div id="progressContainer"><div id="progressBar"></div></div>
+
+<div id="progressContainer">
+<div id="progressBar"></div>
+</div>
+
 <p id="progressText">Progress: 0%</p>
+
 </div>
 </div>
 
 <script>
+
+/* PAGE SWITCH */
+
 function openTool(){
 document.getElementById("homePage").style.display="none";
 document.getElementById("wipPage").style.display="block";
 }
+
 function goHome(){
 document.getElementById("homePage").style.display="block";
 document.getElementById("wipPage").style.display="none";
 }
-let finalData=[];
-function readExcel(file,callback){
-let reader=new FileReader();
-reader.onload=function(e){
-let data=new Uint8Array(e.target.result);
-let workbook=XLSX.read(data,{type:'array'});
-let sheet=workbook.Sheets[workbook.SheetNames[0]];
-let json=XLSX.utils.sheet_to_json(sheet);
-callback(json);
-};
-reader.readAsArrayBuffer(file);
+
+/* PROGRESS BAR */
+
+function updateProgress(p){
+document.getElementById("progressBar").style.width=p+"%";
+document.getElementById("progressText").innerText="Progress: "+p+"%";
 }
+
+/* REMOVE PREFIX 0-0 */
+
+function cleanPart(part){
+
+if(!part) return "";
+
+part = part.toString().trim();
+
+if(part.startsWith("0-0 ")){
+return part.replace("0-0 ","");
+}
+
+return part;
+
+}
+
+let finalData=[];
+
+/* READ EXCEL */
+
+function readExcel(file,callback){
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+
+let data=new Uint8Array(e.target.result);
+
+let workbook=XLSX.read(data,{type:'array'});
+
+let sheet=workbook.Sheets[workbook.SheetNames[0]];
+
+let json=XLSX.utils.sheet_to_json(sheet);
+
+callback(json);
+
+};
+
+reader.readAsArrayBuffer(file);
+
+}
+
+/* PROCESS FILES */
+
 function processFiles(){
+
 let mfgFile=document.getElementById("mfgFile").files[0];
 let rejFile=document.getElementById("rejFile").files[0];
-if(!mfgFile || !rejFile){ alert("Please upload both files"); return; }
-readExcel(mfgFile,function(mfgData){ readExcel(rejFile,function(rejData){ calculate(mfgData,rejData); }); });
+
+if(!mfgFile || !rejFile){
+alert("Please upload both files");
+return;
 }
+
+updateProgress(20);
+
+readExcel(mfgFile,function(mfgData){
+
+updateProgress(60);
+
+readExcel(rejFile,function(rejData){
+
+updateProgress(90);
+
+calculate(mfgData,rejData);
+
+updateProgress(100);
+
+});
+
+});
+
+}
+
+/* CALCULATE WIP */
+
 function calculate(mfgData,rejData){
-finalData=[]; let prevQty={};
+
+finalData=[];
+
+let prevQty={};
+
 mfgData.forEach(row=>{
-let partNo=(row["Level/Part number"]||"").replace(/^0-0\s*/,"");
+
+let partNo=cleanPart(row["Level/Part number"]);
 let orderNo=row["Order no."];
 let workCenter=row["WC"];
 let opNo=row["Op."];
-let rejectionRow=rejData.find(r=> r["M-order"]==orderNo && r["Op."]==opNo && (r["Part number"]||"").replace(/^0-0\s*/,"")==partNo);
-let rejection=rejectionRow?rejectionRow["Rejected qty"]:0;
-let reportQty=row["Rep. qty"]||0; let finalQty=reportQty+rejection;
-let key=orderNo+"_"+partNo; let previous=prevQty[key]||0; let wip=previous-finalQty;
-if(wip<0) wip=0; prevQty[key]=finalQty;
-if(wip>0){ finalData.push({"Order No":orderNo,"Op No":opNo,"Part Number":partNo,"Work Center":workCenter,"WIP Stock":wip}); }
+
+let rejectionRow=rejData.find(r=>
+r["M-order"]==orderNo &&
+r["Op."]==opNo &&
+cleanPart(r["Part number"])==partNo
+);
+
+let rejection=rejectionRow ? rejectionRow["Rejected qty"] : 0;
+
+let reportQty=row["Rep. qty"] || 0;
+
+let finalQty=reportQty + rejection;
+
+let key=orderNo+"_"+partNo;
+
+let previous=prevQty[key] || 0;
+
+let wip=previous-finalQty;
+
+if(wip<0) wip=0;
+
+prevQty[key]=finalQty;
+
+if(wip>0){
+
+finalData.push({
+"Order No":orderNo,
+"Op No":opNo,
+"Part Number":partNo,
+"Work Center":workCenter,
+"WIP Stock":wip
 });
+
+}
+
+});
+
 document.getElementById("downloadBtn").disabled=false;
+
 alert("Report Generated!");
+
 }
+
+/* DOWNLOAD EXCEL WITH PIVOT */
+
 function downloadExcel(){
-let workbook=XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(workbook,XLSX.utils.json_to_sheet(finalData),"WIP_Details");
-XLSX.writeFile(workbook,"WIP_Report.xlsx");
+
+if(finalData.length===0){
+alert("No data to export");
+return;
 }
+
+let workbook=XLSX.utils.book_new();
+
+/* SHEET 1 NORMAL */
+
+let sheet1=XLSX.utils.json_to_sheet(finalData);
+
+XLSX.utils.book_append_sheet(workbook,sheet1,"WIP_Details");
+
+/* PIVOT TABLE */
+
+let pivot={};
+let workCenters=new Set();
+
+finalData.forEach(row=>{
+
+let part=row["Part Number"];
+let wc=row["Work Center"];
+let qty=row["WIP Stock"];
+
+workCenters.add(wc);
+
+if(!pivot[part]){
+pivot[part]={};
+}
+
+pivot[part][wc]=(pivot[part][wc]||0)+qty;
+
+});
+
+let headers=["Part Number",...Array.from(workCenters)];
+
+let pivotData=[headers];
+
+for(let part in pivot){
+
+let row=[part];
+
+headers.slice(1).forEach(wc=>{
+row.push(pivot[part][wc]||0);
+});
+
+pivotData.push(row);
+
+}
+
+let sheet2=XLSX.utils.aoa_to_sheet(pivotData);
+
+XLSX.utils.book_append_sheet(workbook,sheet2,"WIP_Pivot");
+
+/* DOWNLOAD */
+
+XLSX.writeFile(workbook,"WIP_Report.xlsx");
+
+}
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
